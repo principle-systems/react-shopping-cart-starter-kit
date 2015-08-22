@@ -12,8 +12,8 @@ This component comes with no batteries included.
 | onItemQtyChanged | Function                 |          | Called when an item's quantity has changed.                  | `() => {}`              |
 | onChange         | Function                 |          |                                                          | `() => {}`              |
 | iterator         | Function                 |          |                                                          |                       |
-| mainComponent    | React Component          |          | Optional custom container component.                     |                       |
-| rowComponent     | React Component          |          | Optional custom row component.                           |                       |
+| mainComponent    | Component          |          | Optional custom container component.                     |                       |
+| rowComponent     | Component          |          | Optional custom row component.                           |                       |
 | tableClassName   | String                   |          | The css class name to apply to the table element.        |                       |
 | cartEmptyMessage | Node                     |          | The message shown when the cart is empty.                | 'The cart is empty. ' |
 
