@@ -1,3 +1,5 @@
+# React Shopping Cart Starter Kit
+ 
 This component comes with no batteries included. 
 
 ## Props
