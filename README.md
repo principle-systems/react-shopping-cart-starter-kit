@@ -9,7 +9,7 @@ This component comes with no batteries included.
 | allowDoubles     | Boolean                  |          |                                                          | false                 |
 | onItemAdded      | Function                 |          | Called when an item is added to the cart.                | `() => {}`              |
 | onItemRemoved    | Function                 |          | Called when an item is removed from the cart.            | `() => {}`              |
-| onItemQtyChanged | Function                 |          | Called when an item's quantity changes.                  | `() => {}`              |
+| onItemQtyChanged | Function                 |          | Called when an item's quantity has changed.                  | `() => {}`              |
 | onChange         | Function                 |          |                                                          | `() => {}`              |
 | iterator         | Function                 |          |                                                          |                       |
 | mainComponent    | React Component          |          | Optional custom container component.                     |                       |
