@@ -1,0 +1,87 @@
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    margin-top: 2em;
+}
+
+.filter-container {
+    margin-bottom: 2em;
+}
+
+.griddle-footer {
+    text-align: center;
+}
+
+.griddle.griddle-custom .thumbnail {
+    margin-bottom: .8em;
+}
+
+.griddle.griddle-custom .card {
+    text-align: center;
+    margin-bottom: 2em;
+    line-height: 1.4;
+    cursor: -webkit-grab; 
+    cursor: -moz-grab; 
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.griddle.griddle-custom h5 {
+    line-height: 1.4;
+    margin-bottom: .4em;
+}
+
+table.cart > tbody > tr > td:nth-child(1) {
+    width: 10%;
+}
+
+table.cart > tbody > tr > td:nth-child(2) {
+    width: 30%;
+}
+
+table.cart > tbody > tr > td:nth-child(3) {
+    width: 30%;
+}
+
+table.cart > tbody > tr > td:nth-child(4) {
+    width: 5%;
+}
+
+table.cart > tbody > tr > td:nth-child(5) {
+    width: 10%;
+}
+
+table.cart > tbody > tr > td:nth-child(6) {
+    width: 10%;
+}
+
+table.cart > tbody > tr > td:nth-child(7) {
+    width: 5%;
+}
+
+.table.cart .thumbnail {
+    margin-bottom: 0;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.is-over {
+    border: 2px solid green;
+}
+
+.well-is-over {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #3c763d;
+}
+
+.griddle .pagination {
+    margin-bottom: 0;
+}

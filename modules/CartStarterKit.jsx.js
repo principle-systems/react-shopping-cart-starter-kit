@@ -1,0 +1,320 @@
+import EventEmitter        from 'events'
+import React               from 'react'
+import assign              from 'object-assign'
+import { Dispatcher }      from 'flux'
+
+const CartDispatcher = new Dispatcher
+
+const CartStore = assign({}, EventEmitter.prototype, {
+
+    items        : {},
+    selection    : [],
+    nextKey      : 0,
+    allowDoubles : false,
+
+    init(config) {
+        this.items        = config.items
+        this.selection    = []
+        this.allowDoubles = config.allowDoubles
+        config.selection.forEach(item => {
+            if (this.items.hasOwnProperty(item.id)) {
+                item.quantity = Number(item.quantity)
+                item._key     = this.nextKey++
+                item.data     = this.items[item.id]
+                this.selection.push(item)
+                this.items[item.id]._initialQty = item.quantity
+            } else {
+                console.log('No item with id \'' + item.id + '\'.')
+            }
+        })
+        this.reIndex()
+    },
+
+    reIndex() {
+        let i = 0
+        this.selection.forEach(item => {
+            item._index = i++
+        })
+        this.emit('change')
+    },
+
+    getSelection() {
+        return this.selection
+    },
+
+    isEmpty() {
+        return !this.selection.length
+    },
+
+    getItem(index) {
+        return this.selection[index]
+    },
+
+    addItem(item, quantity) {
+        if (true !== this.allowDoubles) {
+            for (let key in this.selection) {
+                if (item === this.selection[key].id) {
+                    const oldQty = this.selection[key].quantity
+                    this.selection[key].quantity += Number(quantity)
+                    this.emit('change')
+                    this.emit('item-changed', this.items[item], this.selection[key].quantity, oldQty)
+                    return
+                }
+            }
+        } 
+        if (this.items.hasOwnProperty(item)) {
+            let data = this.items[item]
+            this.selection.push({
+                id       : item,
+                quantity : Number(quantity),
+                data     : data,
+                _index   : this.selection.length,
+                _key     : this.nextKey++
+            })
+            this.emit('change')
+            this.emit('item-added', data)
+        }
+    },
+
+    removeItem(index) {
+        let id   = this.selection[index].id,
+            item = this.selection.splice(index, 1)[0]
+        this.reIndex()
+        this.emit('item-removed', this.items[id])
+    },
+
+    updateQuantity(index, quantity) {
+        let item = this.selection[index]
+        const oldQty = item.quantity
+        item.quantity = Number(quantity)
+        this.emit('change')
+        this.emit('item-changed', this.items[item.id], quantity, oldQty)
+    },
+
+    reset() {
+        this.selection = []
+        this.emit('change')
+    }
+
+})
+
+CartDispatcher.register(payload => {
+    switch (payload.actionType) {
+        case 'cart-initialize':
+            CartStore.init(payload.config)
+            break
+        case 'cart-add-item':
+            CartStore.addItem(payload.key, payload.quantity)
+            break
+        case 'cart-remove-item':
+            CartStore.removeItem(payload.index)
+            break
+        case 'cart-update-item':
+            CartStore.updateQuantity(payload.index, payload.quantity)
+            break
+        case 'cart-reset':
+            CartStore.reset()
+            break
+    }
+})
+
+const ContainerComponent = React.createClass({
+    render() {
+        return (
+            <table className={this.props.tableClassName}>
+                <thead>
+                    <tr>
+                        {this.props.columns.map(column => {
+                            return (
+                                <th key={column}>
+                                    {column}
+                                </th>
+                            )
+                        })}
+                        <th>
+                            Quantity
+                        </th>
+                        <th />
+                    </tr>
+                </thead>
+                <tbody>
+                    {this.props.body}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colSpan={this.props.columns.length-1} style={{textAlign: 'right'}}>
+                            <strong>Total:</strong>
+                        </td>
+                        <td colSpan={3}>
+                            {this.props.context.total.toFixed(2)}
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        )
+    }
+})
+
+const RowComponent = React.createClass({
+    handleChange(event) {
+        let value = event.target.value
+        if (!isNaN(value) && value > 0) {
+            this.props.setItemQty(value)
+        }
+    },
+    render() {
+        return (
+            <tr>
+                {this.props.columns.map(column => {
+                    return (
+                        <td key={column}>
+                            {this.props.item.data[column]}
+                        </td>
+                    )
+                })}
+                <td>
+                    <input
+                      style    = {{textAlign: 'right', width: '100px'}}
+                      type     = 'number'
+                      value    = {this.props.item.quantity}
+                      onChange = {this.handleChange} />
+                </td>
+                <td>
+                    <button 
+                      onClick  = {this.props.removeItem}>
+                        Remove
+                    </button>
+                </td>
+            </tr>
+        )
+    }
+})
+
+const CartStarterKit = React.createClass({
+    propTypes: {
+        items             : React.PropTypes.object,
+        selection         : React.PropTypes.array,
+        allowDoubles      : React.PropTypes.bool,
+        onItemAdded       : React.PropTypes.func,
+        onItemRemoved     : React.PropTypes.func,
+        onItemQtyChanged  : React.PropTypes.func,
+        onChange          : React.PropTypes.func,
+        iterator          : React.PropTypes.func,
+        tableClassName    : React.PropTypes.string,
+        cartEmptyMessage  : React.PropTypes.node
+    },
+    getDefaultProps() {
+        return {
+            items             : {},
+            selection         : [],
+            allowDoubles      : false,
+            onItemAdded       : () => {},
+            onItemRemoved     : () => {},
+            onItemQtyChanged  : () => {},
+            onChange          : () => {},
+            iterator          : () => {},
+            mainComponent     : ContainerComponent,
+            rowComponent      : RowComponent,
+            tableClassName    : '',
+            cartEmptyMessage  : (
+                <span>
+                    The cart is empty.
+                </span>
+            )
+        }
+    },
+    getInitialState() {
+        return {
+            selection : []
+        }
+    },
+    refresh() {
+        this.setState({
+            selection : CartStore.getSelection()
+        })
+        this.props.onChange()
+    },
+    componentDidMount() {
+        CartStore.on('change', this.refresh)
+        CartStore.on('item-added', this.props.onItemAdded)
+        CartStore.on('item-removed', this.props.onItemRemoved)
+        CartStore.on('item-changed', this.props.onItemQtyChanged)
+        CartDispatcher.dispatch({
+            actionType : 'cart-initialize',
+            config     : {
+                items        : this.props.items,
+                selection    : this.props.selection,
+                allowDoubles : this.props.allowDoubles, 
+            }
+        })
+    },
+    componentWillUnmount() {
+        CartStore.removeListener('change', this.refresh)
+        CartStore.removeListener('item-added', this.props.onItemAdded)
+        CartStore.removeListener('item-removed', this.props.onItemRemoved)
+        CartStore.removeListener('item-changed', this.props.onItemQtyChanged)
+    },
+    addItem(key, quantity) {
+        CartDispatcher.dispatch({
+            actionType : 'cart-add-item',
+            key        : key,
+            quantity   : quantity
+        })
+    },
+    removeItem(index) {
+        CartDispatcher.dispatch({
+            actionType : 'cart-remove-item',
+            index      : index
+        })
+    },
+    updateQuantity(index, quantity) {
+        CartDispatcher.dispatch({
+            actionType : 'cart-update-item',
+            index      : index,
+            quantity   : quantity
+        })
+    },
+    reset() {
+        CartDispatcher.dispatch({
+            actionType : 'cart-reset'
+        })
+    },
+    isEmpty() {
+        return CartStore.isEmpty()
+    },
+    getSelection() {
+        return CartStore.getSelection()
+    },
+    render() {
+        let context   = this.props.iterator(),
+            Container = this.props.mainComponent,
+            Row       = this.props.rowComponent
+        if (this.isEmpty()) {
+            return (
+                <div>
+                    {this.props.cartEmptyMessage}
+                </div>
+            )
+        }
+        return (
+            <Container
+              tableClassName = {this.props.tableClassName}
+              columns        = {this.props.columns}
+              body           = {this.state.selection.map(item => {
+                  context = this.props.iterator(context, item)
+                  return (
+                      <Row
+                        key        = {item._key}
+                        item       = {item}
+                        columns    = {this.props.columns}
+                        removeItem = {( ) => this.removeItem(item._index)}
+                        setItemQty = {qty => this.updateQuantity(item._index, qty)} />
+                  )
+              })}
+              context        = {context} 
+            />
+        )
+    }
+})
+
+module.exports = CartStarterKit
