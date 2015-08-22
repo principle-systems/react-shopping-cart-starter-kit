@@ -5,7 +5,7 @@ This component comes with no batteries included.
 | Property         | Type                     | Required? | Description                                              | Default               | 
 | ---------------- | ------------------------ |:--------:| -------------------------------------------------------- | --------------------- |
 | items            | Object                   | &#10004; |                                                          |                       |
-| selection        | Array                    |          |                                                          | []                    |
+| selection        | Array                    |          |                                                          | `[]`                    |
 | allowDoubles     | Boolean                  |          |                                                          | false                 |
 | onItemAdded      | Function                 |          | Called when an item is added to the cart.                | `() => {}`              |
 | onItemRemoved    | Function                 |          | Called when an item is removed from the cart.            | `() => {}`              |
