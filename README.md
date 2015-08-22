@@ -1,6 +1,6 @@
 # React Shopping Cart Starter Kit
  
-This component comes with no batteries included. 
+This component aims for loose coupling and comes with no batteries included. 
 
 ## Props
 
