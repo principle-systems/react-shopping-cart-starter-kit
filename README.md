@@ -2,7 +2,7 @@ This component comes with no batteries included.
 
 ## Props
 
-| Property         | Type                     |          | Description                                              | Default               | 
+| Property         | Type                     | Required? | Description                                              | Default               | 
 | ---------------- | ------------------------ | -------- | -------------------------------------------------------- | --------------------- |
 | items            | Object                   | &#10004; |                                                          |                       |
 | selection        | Array                    |          |                                                          | []                    |
