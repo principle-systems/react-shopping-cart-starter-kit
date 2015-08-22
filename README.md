@@ -7,10 +7,10 @@ This component comes with no batteries included.
 | items            | Object                   | &#10004; |                                                          |                       |
 | selection        | Array                    |          |                                                          | []                    |
 | allowDoubles     | Boolean                  |          |                                                          | false                 |
-| onItemAdded      | Function                 |          | Called when an item is added to the cart.                | () => {}              |
-| onItemRemoved    | Function                 |          | Called when an item is removed from the cart.            | () => {}              |
-| onItemQtyChanged | Function                 |          | Called when an item's quantity changes.                  | () => {}              |
-| onChange         | Function                 |          |                                                          | () => {}              |
+| onItemAdded      | Function                 |          | Called when an item is added to the cart.                | `() => {}`              |
+| onItemRemoved    | Function                 |          | Called when an item is removed from the cart.            | `() => {}`              |
+| onItemQtyChanged | Function                 |          | Called when an item's quantity changes.                  | `() => {}`              |
+| onChange         | Function                 |          |                                                          | `() => {}`              |
 | iterator         | Function                 |          |                                                          |                       |
 | mainComponent    | React Component          |          | Optional custom container component.                     |                       |
 | rowComponent     | React Component          |          | Optional custom row component.                           |                       |
