@@ -23,14 +23,22 @@ npm install react-shopping-cart-starter-kit
 | tableClassName   | String                   |          | The css class name to apply to the table element.        |                       |
 | cartEmptyMessage | Node                     |          | The message shown when the cart is empty.                | 'The cart is empty. ' |
 
-## addItem(key, quantity)
+### addItem(key, quantity)
+---
 
-## removeItem(index) 
+### removeItem(index) 
+---
 
-## updateQuantity(index, quantity) 
+### updateQuantity(index, quantity) 
+---
 
-## reset()
+### reset()
+---
 
-## getSelection()
+### getSelection()
+---
 
-## isEmpty()
+### isEmpty()
+---
+
+## Recipes and examples
