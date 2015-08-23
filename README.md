@@ -1,11 +1,11 @@
 # React Shopping Cart Starter Kit
  
-This component comes with no batteries included. It was initially designed for creating and editing orders, but is likely to be applicable in other contexts where a selection of some kind is involved.
+This component comes with no batteries included. It was initially designed for shopping cart type of functionality (creating and editing orders), but is likely to be applicable in other contexts where a selection of some kind is involved.
 
 ## Installation
 
 ```
-npm install react-shopping-cart-starter-kit
+$ npm install react-shopping-cart-starter-kit
 ```
 
 ## How to use
@@ -14,19 +14,94 @@ npm install react-shopping-cart-starter-kit
 
 Assign a unique id to each item. For demonstration, we will use the following key-value object with a catalog of five products.
 
+```javascript
+const myProducts = {
+  "product-1" : { "Name" : "Canned Unicorn Meat",   "Price" : "9.99"  },
+  "product-2" : { "Name" : "Disappearing Ink Pen",  "Price" : "14.99" },
+  "product-3" : { "Name" : "USB Rocket Launcher",   "Price" : "29.99" },
+  "product-4" : { "Name" : "Airzooka Air Gun",      "Price" : "29.99" },
+  "product-5" : { "Name" : "Star Trek Paper Clips", "Price" : "19.99" }
+}
 ```
-var myProducts = {
-  "product-1" : { "name": "Canned Unicorn Meat", "price" : "9.99" },
-  "product-2" : { "name": "Disappearing Ink Pen", "price" : "14.99" },
-  "product-3" : { "name": "USB Rocket Launcher", "price" : "29.99" },
-  "product-4" : { "name": "Airzooka Air Gun", "price" : "29.99" },
-  "product-5" : { "name": "Star Trek Paper Clips", "price" : "19.99" }
-};
-```
+
+###### main.js
 
 ### Hello, World!
 
-*todo*
+```javascript
+import React from 'react'
+import Cart  from 'react-shopping-cart-starter-kit'
+
+const myProducts = {
+  "product-1" : { "Name" : "Canned Unicorn Meat",   "Price" : "9.99"  },
+  "product-2" : { "Name" : "Disappearing Ink Pen",  "Price" : "14.99" },
+  "product-3" : { "Name" : "USB Rocket Launcher",   "Price" : "29.99" },
+  "product-4" : { "Name" : "Airzooka Air Gun",      "Price" : "29.99" },
+  "product-5" : { "Name" : "Star Trek Paper Clips", "Price" : "19.99" }
+}
+
+const MyComponent = React.createClass({
+    submit() {
+        const selection = this.refs.cart.getSelection()
+        alert(JSON.stringify(selection))
+    },
+    addItem(key) {
+        this.refs.cart.addItem(key, 1, this.props.products[key])
+    },
+    render() {
+        const products = this.props.products
+        return (
+            <div>
+                <h4>Products</h4>
+                <ul>
+                    {Object.keys(products).map(key => {
+                        return (
+                            <li key={key}>
+                                <a href='#' onClick={() => this.addItem(key)}>
+                                    {products[key]['Name']}
+                                </a>
+                            </li>
+                        )
+                    })}
+                </ul>
+                <hr />
+                <Cart ref='cart' columns={['Name', 'Price']} />
+                <hr />
+                <button onClick={this.submit}>
+                    Submit
+                </button>
+            </div>
+        )
+    }
+})
+
+React.render(
+    <MyComponent products={myProducts} />,
+    document.getElementById('main')
+)
+```
+
+###### index.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+    <div id="main"></div>
+    <script src="bundle.js"></script>
+</body>
+</html>
+```
+
+```
+$ browserify -t babelify ./main.js -o bundle.js
+```
 
 ## Props
 
@@ -54,10 +129,10 @@ var myProducts = {
 
 ## Initial data
 
-If the user is editing an existing selection, use the `selection` prop to pass the collection as an array in the following format.
+When editing an existing selection, use the `selection` prop to pass the collection as an array in the following format.
 
-```
-var orderData = [
+```javascript
+const orderData = [
   {
     "id"       : "item-1",
     "quantity" : 2,
@@ -68,7 +143,7 @@ var orderData = [
     "quantity" : 1,
     "data"     : { "name": "Disappearing Ink Pen", "price" : "14.99" }
   }
-];
+]
 ```
 
 ## API
@@ -78,17 +153,17 @@ var orderData = [
 
 To add an item to the cart, provide its id, a quantity, and the item itself. (The third argument may not be required if you have previously supplied an object to the component's `items` props.) 
 
-```
-cart.addItem('product-1', 1, myProducts['product-1']);
+```javascript
+cart.addItem('product-1', 1, myProducts['product-1'])
 ```
 
-If an item with the given id already exists in the cart, no new item is inserted. Instead, the quantity is adjusted for the existing entry.
+If an item with the given id already exists in the cart, no new item is inserted. Instead, the quantity is adjusted accordingly for the existing entry.
 
-```
-cart.addItem('product-1', 1, myProducts['product-1']);
-cart.addItem('product-1', 1);
+```javascript
+cart.addItem('product-1', 1, myProducts['product-1'])
+cart.addItem('product-1', 1)
 
-cart.getSelection();
+cart.getSelection()
 
 [
   {
@@ -114,7 +189,7 @@ Does the same as `emptyCart()`, unless you specify the `selection` prop, in whic
 
 Return the current selection.
 
-```
+```javascript
 [
   {
     "id"       : "item-1",
@@ -126,13 +201,13 @@ Return the current selection.
     "quantity" : 1,
     "data"     : { "name": "Disappearing Ink Pen", "price" : "14.99" }
   }
-];
+]
 ```
 
 ### isEmpty()
 ---
 
-Return `true` if the cart is empty, otherwise `false`.
+Returns `true` if the cart is empty, otherwise `false`.
 
 ### removeItem(index) 
 ---
