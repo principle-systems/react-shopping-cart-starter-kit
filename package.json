@@ -1,6 +1,6 @@
 {
   "name": "react-shopping-cart-starter-kit",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Reusable shopping cart component for React with no extra fluff.",
   "main": "modules/CartStarterKit.jsx.js",
   "directories": {
@@ -42,7 +42,6 @@
   "dependencies": {
     "flux": "^2.1.1",
     "griddle-react": "^0.2.13",
-    "react": "^0.13.3",
     "react-bootstrap": "^0.24.5",
     "react-dnd": "^1.1.5",
     "underscore": "^1.8.3",
