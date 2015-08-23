@@ -104,6 +104,64 @@ React.render(
 $ browserify -t babelify ./main.js -o bundle.js
 ```
 
+### Improvements to Hello, World!
+
+Next, we'll implement a row iterator to sum up the order total.
+
+```javascript
+   <Cart iterator={this.rowIterator} ref='cart' columns={['Name', 'Price']} />
+```
+
+This function is called once to allow initialization, and then for each item in the cart. The object we return is being passed on as an argument to the subsequent call, together with the row item. 
+
+```javascript
+    rowIterator(context, row) {
+        if (!context) {
+            return {
+                total : 0
+            }
+        } else {
+            let price = Number(row.data['Price'])
+            return {
+                total : context.total + row.quantity * price
+            }
+        }
+    },
+```
+
+To change how the component renders the cart's contents, implement the `mainComponent` and/or `rowComponent` props. (See Customization)
+
+Finally, we'd like to have the submit button disappear when nothing is present in the cart. To achieve this, we introduce a `this.state.canSubmit` flag.
+
+```javascript
+        <Cart 
+          ref      = 'cart'
+          onChange = {this.cartChanged}
+          iterator = {this.rowIterator}
+          columns  = {['Name', 'Price']} />
+        <hr />
+        {this.state.canSubmit && ( 
+            <button onClick={this.submit}>
+                Submit
+            </button>
+        )}
+```
+
+We add `cartChanged` and `getInitialState` to `MyComponent`.
+
+```javascript
+    getInitialState() {
+        return {
+            canSubmit : false
+        }
+    },
+    cartChanged() {
+        this.setState({
+            canSubmit : !this.refs.cart.isEmpty()
+        })
+    },
+```
+
 ## Props
 
 ### Required
@@ -116,7 +174,7 @@ $ browserify -t babelify ./main.js -o bundle.js
 
 | Property         | Type                     | Description                                              | Default               | 
 | ---------------- | ------------------------ | -------------------------------------------------------- | --------------------- |
-| items            | Object                   | Normally, you pass an item's data with the call to `addItem`. As an alternative, you may provide an object here, mapping each key to an object with this data.
+| items            | Object                   | Normally, you pass an item's data with the call to `addItem`. As an alternative, you may provide an object here, mapping each key to an object with the item's attributes.
 | selection        | Array                    | Initial selection. (Used when editing an existing order or selection of items).    | `[]`                    |
 | onItemAdded      | Function                 | Called when an item is added to the cart.                | `() => {}`              |
 | onItemRemoved    | Function                 | Called when an item is removed from the cart.            | `() => {}`              |
