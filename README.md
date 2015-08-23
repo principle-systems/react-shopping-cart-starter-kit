@@ -2,11 +2,31 @@
  
 This component comes with no batteries included. It was initially designed for creating and editing orders, but is likely to be applicable in other contexts where a selection of some kind is involved.
 
+## Installation
+
 ```
 npm install react-shopping-cart-starter-kit
 ```
 
-<!-- &#10004; -->
+## How to use
+
+### Preparation
+
+Assign a unique id to each item. For demonstration, we will use the following key-value object with a catalog of five products.
+
+```
+var myProducts = {
+  "product-1" : { "name": "Canned Unicorn Meat", "price" : "9.99" },
+  "product-2" : { "name": "Disappearing Ink Pen", "price" : "14.99" },
+  "product-3" : { "name": "USB Rocket Launcher", "price" : "29.99" },
+  "product-4" : { "name": "Airzooka Air Gun", "price" : "29.99" },
+  "product-5" : { "name": "Star Trek Paper Clips", "price" : "19.99" }
+};
+```
+
+### Hello, World!
+
+*todo*
 
 ## Props
 
@@ -32,24 +52,6 @@ npm install react-shopping-cart-starter-kit
 | tableClassName   | String                   | The css class name to apply to the table element. Whether this value is actually used or not depends on the implementation of `mainComponent`.       |                       |
 | cartEmptyMessage | Node                     | A message shown when the cart is empty.                | 'The cart is empty.' |
 
-## Preparation
-
-Assign a unique id to each item you add to the cart. For demonstration, we will use the following key-value object with a catalog of five products.
-
-```
-var myProducts = {
-  "product-1" : { "name": "Canned Unicorn Meat", "price" : "9.99" },
-  "product-2" : { "name": "Disappearing Ink Pen", "price" : "14.99" },
-  "product-3" : { "name": "USB Rocket Launcher", "price" : "29.99" },
-  "product-4" : { "name": "Airzooka Air Gun", "price" : "29.99" },
-  "product-5" : { "name": "Star Trek Paper Clips", "price" : "19.99" }
-};
-```
-
-## Hello, World!
-
-*todo*
-
 ## Initial data
 
 If the user is editing an existing selection, use the `selection` prop to pass the collection as an array in the following format.
@@ -68,6 +70,8 @@ var orderData = [
   }
 ];
 ```
+
+## API
 
 ### addItem(key, quantity, item)
 ---
