@@ -1,6 +1,6 @@
 {
   "name": "react-shopping-cart-starter-kit",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Reusable shopping cart component for React with no extra fluff.",
   "main": "modules/CartStarterKit.jsx.js",
   "directories": {
@@ -50,6 +50,7 @@
   },
   "peerDependencies": {
     "react": "^0.13.3",
-    "browserify": "^11.0.1"
+    "browserify": "^11.0.1",
+    "babelify": "^6.2.0"
   }
 }
