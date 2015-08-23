@@ -24,5 +24,15 @@
   "license": "BSD3",
   "bugs": {
     "url": "https://github.com/principle-systems/react-shopping-cart-starter-kit/issues"
+  },
+  "devDependencies": {
+    "babelify": "^6.2.0",
+    "browserify": "^11.0.1",
+    "gulp": "^3.9.0"
+  },
+  "dependencies": {
+    "griddle-react": "^0.2.13",
+    "react": "^0.13.3",
+    "underscore": "^1.8.3"
   }
 }
