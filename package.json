@@ -1,0 +1,28 @@
+{
+  "name": "react-shopping-cart-starter-kit",
+  "version": "0.0.0",
+  "description": "Reusable shopping cart component for React with no extra fluff.",
+  "main": "modules/CartStarterKit.jsx.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/principle-systems/react-shopping-cart-starter-kit.git"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "cart",
+    "basket",
+    "shopping"
+  ],
+  "author": "Johannes Hilden <johannes@isomorphic.co>",
+  "license": "BSD3",
+  "bugs": {
+    "url": "https://github.com/principle-systems/react-shopping-cart-starter-kit/issues"
+  }
+}
