@@ -88,7 +88,8 @@ const BootstrapCart = React.createClass({
         }
     },
     handleRowClick(row) {
-        this.refs.cart.addItem(row.props.data.id, 1)
+        const item = row.props.data
+        this.refs.cart.addItem(row.props.data.id, 1, item)
     },
     refresh() {
         if (!this.refs.cart) {
@@ -231,7 +232,6 @@ const BootstrapCart = React.createClass({
                     <Cart 
                       ref                     = 'cart'
                       tableClassName          = 'table cart'
-                      items                   = {items} 
                       onChange                = {this.refresh}
                       columns                 = {['Artist', 'Title', 'Format', 'Price']}
                       iterator                = {this.rowIterator}

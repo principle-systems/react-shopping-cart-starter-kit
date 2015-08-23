@@ -10,22 +10,23 @@ const CartStore = assign({}, EventEmitter.prototype, {
     items        : {},
     selection    : [],
     nextKey      : 0,
-    allowDoubles : false,
 
     init(config) {
         this.items        = config.items
         this.selection    = []
-        this.allowDoubles = config.allowDoubles
         config.selection.forEach(item => {
-            if (this.items.hasOwnProperty(item.id)) {
-                item.quantity = Number(item.quantity)
-                item._key     = this.nextKey++
-                item.data     = this.items[item.id]
-                this.selection.push(item)
-                this.items[item.id]._initialQty = item.quantity
+            item.quantity = Number(item.quantity)
+            item._key     = this.nextKey++
+            if (item.data) {
+                this.items[item.id] = item.data
             } else {
-                console.log('No item with id \'' + item.id + '\'.')
+                item.data = this.items[item.id]
             }
+            if (!item.data) {
+                throw 'Missing data for item \'' + item.id + '\'.'
+            }
+            this.selection.push(item)
+            this.items[item.id]._initialQty = item.quantity
         })
         this.reIndex()
     },
@@ -50,20 +51,22 @@ const CartStore = assign({}, EventEmitter.prototype, {
         return this.selection[index]
     },
 
-    addItem(item, quantity) {
-        if (true !== this.allowDoubles) {
-            for (let key in this.selection) {
-                if (item === this.selection[key].id) {
-                    const oldQty = this.selection[key].quantity
-                    this.selection[key].quantity += Number(quantity)
-                    this.emit('change')
-                    this.emit('item-changed', this.items[item], this.selection[key].quantity, oldQty)
-                    return
-                }
-            }
-        } 
+    addItem(item, quantity, data) {
         if (this.items.hasOwnProperty(item)) {
-            let data = this.items[item]
+            data = this.items[item]
+        } else {
+            this.items[item] = data
+        }
+        for (let key in this.selection) {
+            if (item === this.selection[key].id) {
+                const oldQty = this.selection[key].quantity
+                this.selection[key].quantity += Number(quantity)
+                this.emit('change')
+                this.emit('item-changed', this.items[item], this.selection[key].quantity, oldQty)
+                return
+            }
+        }
+        if (data) {
             this.selection.push({
                 id       : item,
                 quantity : Number(quantity),
@@ -104,7 +107,7 @@ CartDispatcher.register(payload => {
             CartStore.init(payload.config)
             break
         case 'cart-add-item':
-            CartStore.addItem(payload.key, payload.quantity)
+            CartStore.addItem(payload.key, payload.quantity, payload.item)
             break
         case 'cart-remove-item':
             CartStore.removeItem(payload.index)
@@ -194,7 +197,6 @@ const CartStarterKit = React.createClass({
     propTypes: {
         items             : React.PropTypes.object,
         selection         : React.PropTypes.array,
-        allowDoubles      : React.PropTypes.bool,
         onItemAdded       : React.PropTypes.func,
         onItemRemoved     : React.PropTypes.func,
         onItemQtyChanged  : React.PropTypes.func,
@@ -207,7 +209,6 @@ const CartStarterKit = React.createClass({
         return {
             items             : {},
             selection         : [],
-            allowDoubles      : false,
             onItemAdded       : () => {},
             onItemRemoved     : () => {},
             onItemQtyChanged  : () => {},
@@ -243,8 +244,7 @@ const CartStarterKit = React.createClass({
             actionType : 'cart-initialize',
             config     : {
                 items        : this.props.items,
-                selection    : this.props.selection,
-                allowDoubles : this.props.allowDoubles, 
+                selection    : this.props.selection
             }
         })
     },
@@ -254,11 +254,12 @@ const CartStarterKit = React.createClass({
         CartStore.removeListener('item-removed', this.props.onItemRemoved)
         CartStore.removeListener('item-changed', this.props.onItemQtyChanged)
     },
-    addItem(key, quantity) {
+    addItem(key, quantity, item) {
         CartDispatcher.dispatch({
             actionType : 'cart-add-item',
             key        : key,
-            quantity   : quantity
+            quantity   : quantity,
+            item       : item
         })
     },
     removeItem(index) {
@@ -274,9 +275,19 @@ const CartStarterKit = React.createClass({
             quantity   : quantity
         })
     },
-    reset() {
+    emptyCart() {
         CartDispatcher.dispatch({
             actionType : 'cart-reset'
+        })
+    },
+    reset() {
+        this.emptyCart()
+        CartDispatcher.dispatch({
+            actionType : 'cart-initialize',
+            config     : {
+                items        : this.props.items,
+                selection    : this.props.selection
+            }
         })
     },
     isEmpty() {

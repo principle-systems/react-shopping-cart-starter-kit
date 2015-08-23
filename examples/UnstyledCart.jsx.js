@@ -16,7 +16,7 @@ const MainComponent = React.createClass({
         }
     },
     handleRowClick(row) {
-        this.refs.cart.addItem(row.props.data.id, 1)
+        this.refs.cart.addItem(row.props.data.id, 1, row.props.data)
     },
     notifyItemAdded(item) {
         console.log('--------------------------------------------------')
@@ -37,6 +37,9 @@ const MainComponent = React.createClass({
     },
     handleSubmit() {
         console.log(this.refs.cart.getSelection())
+    },
+    handleEmptyCart() {
+        this.refs.cart.emptyCart()
     },
     handleReset() {
         this.refs.cart.reset()
@@ -75,15 +78,16 @@ const MainComponent = React.createClass({
                   results           = {this.state.data} />
                 <Cart 
                   ref               = 'cart'
-                  items             = {items} 
                   selection         = {[
                       {
                           id       : 'item-1',
-                          quantity : 2
+                          quantity : 2,
+                          data     : items['item-1']
                       },
                       {
                           id       : 'item-3',
-                          quantity : 4
+                          quantity : 4,
+                          data     : items['item-3']
                       }
                   ]}
                   onItemAdded       = {this.notifyItemAdded}
@@ -98,11 +102,14 @@ const MainComponent = React.createClass({
                         <button onClick={this.handleSubmit}>
                             Submit
                         </button>
-                        <button onClick={this.handleReset}>
-                            Reset
+                        <button onClick={this.handleEmptyCart}>
+                            Clear cart
                         </button>
                     </div>
                 ) : <span />}
+                <button onClick={this.handleReset}>
+                    Reset
+                </button>
             </div>
         )
     }

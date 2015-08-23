@@ -162,13 +162,13 @@ const DragDropComponent = React.createClass({
         this.setState({purchase: null})
     },
     reset() {
-        this.refs.cart.reset()
+        this.refs.cart.emptyCart()
     },
     componentDidMount() {
         this.refresh()
     },
     itemDropped(item) {
-        this.refs.cart.addItem(item, 1)
+        this.refs.cart.addItem(item, 1, items[item])
     },
     rowIterator(context, row) {
         if (!context) {
@@ -252,7 +252,6 @@ const DragDropComponent = React.createClass({
                                     <Cart 
                                       ref                     = 'cart'
                                       tableClassName          = 'table cart'
-                                      items                   = {items} 
                                       onChange                = {this.refresh}
                                       columns                 = {['Artist', 'Title', 'Format', 'Price']}
                                       iterator                = {this.rowIterator}
