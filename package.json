@@ -28,11 +28,18 @@
   "devDependencies": {
     "babelify": "^6.2.0",
     "browserify": "^11.0.1",
-    "gulp": "^3.9.0"
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.2.1",
+    "gulp-uglify": "^1.2.0",
+    "uglify": "^0.1.5",
+    "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
+    "flux": "^2.1.1",
     "griddle-react": "^0.2.13",
     "react": "^0.13.3",
+    "react-bootstrap": "^0.24.5",
+    "react-dnd": "^1.1.5",
     "underscore": "^1.8.3"
   }
 }
