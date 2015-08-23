@@ -1,6 +1,6 @@
 {
   "name": "react-shopping-cart-starter-kit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Reusable shopping cart component for React with no extra fluff.",
   "main": "modules/CartStarterKit.jsx.js",
   "directories": {
@@ -24,6 +24,11 @@
   "license": "BSD3",
   "bugs": {
     "url": "https://github.com/principle-systems/react-shopping-cart-starter-kit/issues"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
   },
   "devDependencies": {
     "babelify": "^6.2.0",
