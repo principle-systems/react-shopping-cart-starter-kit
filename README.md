@@ -2,6 +2,10 @@
  
 This component aims for loose coupling and comes with no batteries included. 
 
+```
+npm install react-shopping-cart-starter-kit
+```
+
 ## Props
 
 | Property         | Type                     | Required? | Description                                              | Default               | 
