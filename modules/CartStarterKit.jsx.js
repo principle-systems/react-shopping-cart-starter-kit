@@ -143,16 +143,18 @@ const ContainerComponent = React.createClass({
                 <tbody>
                     {this.props.body}
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <td colSpan={this.props.columns.length-1} style={{textAlign: 'right'}}>
-                            <strong>Total:</strong>
-                        </td>
-                        <td colSpan={3}>
-                            {this.props.context.total.toFixed(2)}
-                        </td>
-                    </tr>
-                </tfoot>
+                {this.props.context.total && (
+                    <tfoot>
+                        <tr>
+                            <td colSpan={this.props.columns.length-1} style={{textAlign: 'right'}}>
+                                <strong>Total:</strong>
+                            </td>
+                            <td colSpan={3}>
+                                {this.props.context.total.toFixed(2)}
+                            </td>
+                        </tr>
+                    </tfoot>
+                )}
             </table>
         )
     }
@@ -213,7 +215,7 @@ const CartStarterKit = React.createClass({
             onItemRemoved     : () => {},
             onItemQtyChanged  : () => {},
             onChange          : () => {},
-            iterator          : () => {},
+            iterator          : () => { return {} },
             mainComponent     : ContainerComponent,
             rowComponent      : RowComponent,
             tableClassName    : '',
@@ -318,7 +320,7 @@ const CartStarterKit = React.createClass({
                         key        = {item._key}
                         item       = {item}
                         columns    = {this.props.columns}
-                        removeItem = {( ) => this.removeItem(item._index)}
+                        removeItem = {()  => this.removeItem(item._index)}
                         setItemQty = {qty => this.updateQuantity(item._index, qty)} />
                   )
               })}
