@@ -238,10 +238,6 @@ const CartStarterKit = React.createClass({
         this.props.onChange()
     },
     componentDidMount() {
-        CartStore.on('change', this.refresh)
-        CartStore.on('item-added', this.props.onItemAdded)
-        CartStore.on('item-removed', this.props.onItemRemoved)
-        CartStore.on('item-changed', this.props.onItemQtyChanged)
         CartDispatcher.dispatch({
             actionType : 'cart-initialize',
             config     : {
@@ -249,6 +245,10 @@ const CartStarterKit = React.createClass({
                 selection    : this.props.selection
             }
         })
+        CartStore.on('change', this.refresh)
+        CartStore.on('item-added', this.props.onItemAdded)
+        CartStore.on('item-removed', this.props.onItemRemoved)
+        CartStore.on('item-changed', this.props.onItemQtyChanged)
     },
     componentWillUnmount() {
         CartStore.removeListener('change', this.refresh)
