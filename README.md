@@ -24,9 +24,10 @@ const myProducts = {
 }
 ```
 
-###### main.js
 
 ### Hello, World!
+
+###### main.js
 
 ```javascript
 import React from 'react'
