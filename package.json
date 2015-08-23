@@ -1,6 +1,6 @@
 {
   "name": "react-shopping-cart-starter-kit",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Reusable shopping cart component for React with no extra fluff.",
   "main": "modules/CartStarterKit.jsx.js",
   "directories": {
@@ -36,6 +36,7 @@
     "gulp": "^3.9.0",
     "gulp-babel": "^5.2.1",
     "gulp-uglify": "^1.2.0",
+    "object-assign": "^4.0.1",
     "uglify": "^0.1.5",
     "vinyl-source-stream": "^1.1.0"
   },
