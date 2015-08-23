@@ -1,6 +1,6 @@
 # React Shopping Cart Starter Kit
  
-This component comes with no batteries included. 
+This component comes with no batteries included. It was initially designed for creating and editing orders, but is likely to be applicable in other contexts where a selection of some kind is involved.
 
 ```
 npm install react-shopping-cart-starter-kit
@@ -20,7 +20,7 @@ npm install react-shopping-cart-starter-kit
 
 | Property         | Type                     | Description                                              | Default               | 
 | ---------------- | ------------------------ | -------------------------------------------------------- | --------------------- |
-| items            | Object                   | Normally, you pass item data with the call to `addItem`. As an alternative, you may provide an object here mapping each key to an object with item data.
+| items            | Object                   | Normally, you pass an item's data with the call to `addItem`. As an alternative, you may provide an object here mapping each key to an object with this data.
 | selection        | Array                    | Initial selection. (Used when editing an existing order or selection of items).    | `[]`                    |
 | onItemAdded      | Function                 | Called when an item is added to the cart.                | `() => {}`              |
 | onItemRemoved    | Function                 | Called when an item is removed from the cart.            | `() => {}`              |
@@ -48,7 +48,7 @@ var myProducts = {
 
 ## Hello, World!
 
-
+*todo*
 
 ## Initial data
 
@@ -72,13 +72,13 @@ var orderData = [
 ### addItem(key, quantity, item)
 ---
 
-To add an item to the cart, provide its id, a quantity, and the item itself. (The third argument may not be required if you have supplied an object to the component's `items` props.) 
+To add an item to the cart, provide its id, a quantity, and the item itself. (The third argument may not be required if you have previously supplied an object to the component's `items` props.) 
 
 ```
 cart.addItem('product-1', 1, myProducts['product-1']);
 ```
 
-If an item with the given id already exists in the cart, no new item is inserted. Instead, the quantity is increased for the existing entry.
+If an item with the given id already exists in the cart, no new item is inserted. Instead, the quantity is adjusted for the existing entry.
 
 ```
 cart.addItem('product-1', 1, myProducts['product-1']);
@@ -103,7 +103,7 @@ Clears the cart.
 ### reset()
 ---
 
-Does the same as `emptyCart()`, unless you specify the `selection` prop, in which case the initial selection will be restored. E.g., if editing an existing order, this method will revert the cart back to a state consistent with the order being edited.
+Does the same as `emptyCart()`, unless you specify the `selection` prop, in which case the initial selection will be restored. That is, when editing an existing order, this method will revert the cart back to a state consistent with the order being edited.
 
 ### getSelection()
 ---
@@ -142,5 +142,9 @@ In a typical implementation, it is not necessary to call this method directly. I
 
 ## Customization
 
+*todo*
+
 ## Recipes 
+
+*todo*
 
