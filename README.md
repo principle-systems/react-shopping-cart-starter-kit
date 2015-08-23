@@ -11,13 +11,13 @@ npm install react-shopping-cart-starter-kit
 | Property         | Type                     | Required? | Description                                              | Default               | 
 | ---------------- | ------------------------ |:--------:| -------------------------------------------------------- | --------------------- |
 | items            | Object                   | &#10004; |                                                          |                       |
-| selection        | Array                    |          |                                                          | `[]`                    |
+| selection        | Array                    |          | Pre-selected items. E.g., editing an existing order.     | `[]`                    |
 | allowDoubles     | Boolean                  |          | If true, an item may appear more than once in the selection.  | `false`                 |
 | onItemAdded      | Function                 |          | Called when an item is added to the cart.                | `() => {}`              |
 | onItemRemoved    | Function                 |          | Called when an item is removed from the cart.            | `() => {}`              |
 | onItemQtyChanged | Function                 |          | Called when an item's quantity has changed.                  | `() => {}`              |
 | onChange         | Function                 |          |                                                          | `() => {}`              |
-| iterator         | Function                 |          |                                                          |                       |
+| iterator         | Function                 |          | A function used to thread state in-between rows. Typical use: To sum up the price of each item and output a total in the footer. |                       |
 | mainComponent    | Component          |          | A custom container component.                     |                       |
 | rowComponent     | Component          |          | A custom row component.                           |                       |
 | tableClassName   | String                   |          | The css class name to apply to the table element.        |                       |
