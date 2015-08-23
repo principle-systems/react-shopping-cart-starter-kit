@@ -109,7 +109,7 @@ $ browserify -t babelify ./main.js -o bundle.js
 Next, we'll implement a row iterator to sum up the order total.
 
 ```javascript
-   <Cart iterator={this.rowIterator} ref='cart' columns={['Name', 'Price']} />
+<Cart iterator={this.rowIterator} ref='cart' columns={['Name', 'Price']} />
 ```
 
 This function is called once to allow initialization, and then for each item in the cart. The object we return is being passed on as an argument to the subsequent call, together with the row item. 
