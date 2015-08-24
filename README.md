@@ -20,6 +20,9 @@ The following third-party components/frameworks are used in the examples:
 [Bootstrap + Griddle example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-bootstrap.html)
 
 ##### Drag and Drop example
+
+![Drag and Drop examplee](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/img/screenshot-drag-and-drop.png)
+
 [Drag and Drop example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-drag-drop.html)
 
 ##### Unstyled cart with initial selection
