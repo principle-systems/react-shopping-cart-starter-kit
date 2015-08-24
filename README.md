@@ -17,7 +17,10 @@ The following third-party components/frameworks are used in the examples:
 * [React DnD](https://gaearon.github.io/react-dnd/)
 
 #### Bootstrap + Griddle example
-[Bootstrap + Griddle example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-bootstrap.html)
+
+![Bootstrap example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/img/screenshot-bootstrap.png)
+
+[View example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-bootstrap.html)
 
 #### Drag and Drop example
 
@@ -26,7 +29,8 @@ The following third-party components/frameworks are used in the examples:
 [View example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-drag-drop.html)
 
 #### Unstyled cart with initial selection
-[Unstyled cart with initial selection](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-unstyled.html)
+
+[View example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-unstyled.html)
 
 [All examples](https://github.com/principle-systems/react-shopping-cart-starter-kit/tree/master/examples)
 
