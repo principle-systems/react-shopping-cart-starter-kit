@@ -188,8 +188,6 @@ We also add `cartChanged` and `getInitialState` to `MyComponent`.
     },
 ```
 
-> To change how the component renders the cart's contents, implement the `mainComponent` and/or `rowComponent` props. (See Customization)
-
 ### Editing an existing selection of items
 
 Up to this point, we have assumed that the cart is initially empty. When working with an existing order or selection, we can provide an item array to the cart's `selection` prop.
@@ -229,6 +227,8 @@ To make the submit button appear in edit mode, we add a call to `cartChanged` wh
         this.cartChanged()
     },
 ```
+
+> To change how the component renders the cart's contents, implement the `mainComponent` and/or `rowComponent` props. (See Customization)
 
 ## Props
 
