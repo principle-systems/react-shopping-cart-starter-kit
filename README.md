@@ -16,16 +16,16 @@ The following third-party components/frameworks are used in the examples:
 * [Griddle](http://griddlegriddle.github.io/Griddle/)
 * [React DnD](https://gaearon.github.io/react-dnd/)
 
-#### Bootstrap + Griddle example
+##### Bootstrap + Griddle example
 [Bootstrap + Griddle example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-bootstrap.html)
 
-#### Drag and Drop example
+##### Drag and Drop example
 [Drag and Drop example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-drag-drop.html)
 
-#### Unstyled cart with initial selection
+##### Unstyled cart with initial selection
 [Unstyled cart with initial selection](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-unstyled.html)
 
-## How to use
+## How to use this component
 
 ### Preparation
 
@@ -40,8 +40,6 @@ const myProducts = {
   "product-5" : { "Name" : "Star Trek Paper Clips", "Price" : "19.99" }
 }
 ```
-
-
 ### Hello, World!
 
 ###### main.js
