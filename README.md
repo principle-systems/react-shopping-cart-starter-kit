@@ -176,13 +176,13 @@ We add `cartChanged` and `getInitialState` to `MyComponent`.
 
 | Property         | Type                     | Description                                              | Default               | 
 | ---------------- | ------------------------ | -------------------------------------------------------- | --------------------- |
-| items            | Object                   | Normally, you pass an item's data with the call to `addItem`. As an alternative, you may provide an object here, mapping each key to an object with the item's attributes.  | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+| items            | Object                   | Normally, you pass an item's data with the call to `addItem`. As an alternative, you may provide an object here, mapping each key to an object with the item's attributes.  | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 | selection        | Array                    | Initial selection. (Used when editing an existing order or selection of items).    | `[]`                    |
 | onItemAdded      | Function                 | Called when an item is added to the cart.                | `() => {}`              |
 | onItemRemoved    | Function                 | Called when an item is removed from the cart.            | `() => {}`              |
 | onItemQtyChanged | Function                 | Called when an item's quantity has changed.                  | `() => {}`              |
 | onChange         | Function                 | Called when the state of the component changes. (You may want to implement this callback to toggle the visibility of a submit button, based on whether the cart is empty or not.)                                                         | `() => {}`              |
-| iterator         | Function                 | A function used to pass state between rows. The real raison d'&ecirc;tre for this function is to sum up the price of each product in an order and output a total in the footer. | `() => { return {} }`                       |
+| iterator         | Function                 | A function used to pass state between rows. The real raison d'&ecirc;tre for this function is to sum up the price of each product in an order and output a total in the footer. | `() => { ... }`                       |
 | mainComponent    | Component                | A custom container component.                     |                       |
 | rowComponent     | Component                | A custom row component.                           |                       |
 | tableClassName   | String                   | The css class name to apply to the table element. Whether this value is actually used or not depends on the implementation of `mainComponent`.       |                       |
