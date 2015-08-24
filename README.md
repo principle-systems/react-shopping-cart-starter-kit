@@ -176,7 +176,7 @@ We add `cartChanged` and `getInitialState` to `MyComponent`.
 
 | Property         | Type                     | Description                                              | Default               | 
 | ---------------- | ------------------------ | -------------------------------------------------------- | --------------------- |
-| items            | Object                   | Normally, you pass an item's data with the call to `addItem`. As an alternative, you may provide an object here, mapping each key to an object with the item's attributes.
+| items            | Object                   | Normally, you pass an item's data with the call to `addItem`. As an alternative, you may provide an object here, mapping each key to an object with the item's attributes.  | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 | selection        | Array                    | Initial selection. (Used when editing an existing order or selection of items).    | `[]`                    |
 | onItemAdded      | Function                 | Called when an item is added to the cart.                | `() => {}`              |
 | onItemRemoved    | Function                 | Called when an item is removed from the cart.            | `() => {}`              |
