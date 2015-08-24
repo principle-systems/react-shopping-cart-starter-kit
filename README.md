@@ -12,7 +12,7 @@ $ npm install react-shopping-cart-starter-kit
 
 ### Preparation
 
-Assign a unique id to each item used in your application. For demonstration, we will use the following key-value object with a catalog of five products.
+Assign a unique id to each item used in your application. For demonstration, we will use the following key-value object with a catalog of five products in subsequent examples.
 
 ```javascript
 const myProducts = {
