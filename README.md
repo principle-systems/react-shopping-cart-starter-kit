@@ -10,7 +10,11 @@ $ npm install react-shopping-cart-starter-kit
 
 ## Examples
 
-The following third-party components/frameworks are used in the examples:
+* [Unstyled cart with initial selection](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-unstyled.html)
+* [All examples](https://github.com/principle-systems/react-shopping-cart-starter-kit/tree/master/examples)
+* [Sample data](https://github.com/principle-systems/react-shopping-cart-starter-kit/blob/master/examples/sampledata.js)
+
+The following third-party components/frameworks are used in subsequent examples:
 
 * [React-Bootstrap](http://react-bootstrap.github.io/)
 * [Griddle](http://griddlegriddle.github.io/Griddle/)
@@ -27,12 +31,6 @@ The following third-party components/frameworks are used in the examples:
 ![Drag and Drop example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/img/screenshot-drag-and-drop.png)
 
 [View example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-drag-drop.html)
-
-#### Unstyled cart with initial selection
-
-[View example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-unstyled.html)
-
-[All examples](https://github.com/principle-systems/react-shopping-cart-starter-kit/tree/master/examples)
 
 ## How to use this component
 
