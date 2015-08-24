@@ -164,6 +164,46 @@ We add `cartChanged` and `getInitialState` to `MyComponent`.
     },
 ```
 
+### Editing an existing selection of items
+
+Up to this point, we have assumed that the cart is initially empty. When working with an existing order or selection, we can provide an item array to the cart's `selection` prop.
+
+```javascript
+        <Cart 
+          /* ... as before ... */
+          selection = {[
+              {
+                  id       : 'product-2',
+                  quantity : 15,
+                  data     : myProducts['product-2']
+              },
+              {
+                  id       : 'product-3',
+                  quantity : 1,
+                  data     : myProducts['product-3']
+              }
+          ]} 
+```
+
+To allow the user to revert any changes back to the order's initial state, we add a button that triggers the cart's `reset` method.
+
+```javascript
+    <button onClick={this.undoChanges}>
+        Undo changes
+    </button>
+```
+
+To make the submit button appear in edit mode, we add a call to `cartChanged` when the component has mounted.
+ 
+```javascript
+    undoChanges() {
+        this.refs.cart.reset()
+    },
+    componentDidMount() {
+        this.cartChanged()
+    },
+```
+
 ## Props
 
 ### Required
