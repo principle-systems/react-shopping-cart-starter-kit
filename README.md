@@ -115,6 +115,8 @@ React.render(
 </html>
 ```
 
+Build.
+
 ```
 $ browserify -t babelify ./main.js -o bundle.js
 ```
