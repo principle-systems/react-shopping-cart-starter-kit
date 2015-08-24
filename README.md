@@ -117,10 +117,12 @@ This function is called once to allow initialization, and then for each item in 
 ```javascript
     rowIterator(context, row) {
         if (!context) {
+            /* Initialization call */
             return {
                 total : 0
             }
         } else {
+            /* Invoked once for each row */
             let price = Number(row.data['Price'])
             return {
                 total : context.total + row.quantity * price
