@@ -1291,7 +1291,7 @@ var ContainerComponent = _react2['default'].createClass({
     render: function render() {
         return _react2['default'].createElement('table', { className: this.props.tableClassName }, _react2['default'].createElement('thead', null, _react2['default'].createElement('tr', null, this.props.columns.map(function (column) {
             return _react2['default'].createElement('th', { key: column }, column);
-        }), _react2['default'].createElement('th', null, 'Quantity'), _react2['default'].createElement('th', null))), _react2['default'].createElement('tbody', null, this.props.body), _react2['default'].createElement('tfoot', null, _react2['default'].createElement('tr', null, _react2['default'].createElement('td', { colSpan: this.props.columns.length - 1, style: { textAlign: 'right' } }, _react2['default'].createElement('strong', null, 'Total:')), _react2['default'].createElement('td', { colSpan: 3 }, this.props.context.total.toFixed(2)))));
+        }), _react2['default'].createElement('th', null, 'Quantity'), _react2['default'].createElement('th', null))), _react2['default'].createElement('tbody', null, this.props.body), this.props.context.total && _react2['default'].createElement('tfoot', null, _react2['default'].createElement('tr', null, _react2['default'].createElement('td', { colSpan: this.props.columns.length - 1, style: { textAlign: 'right' } }, _react2['default'].createElement('strong', null, 'Total:')), _react2['default'].createElement('td', { colSpan: 3 }, this.props.context.total.toFixed(2)))));
     }
 });
 
@@ -1340,7 +1340,9 @@ var CartStarterKit = _react2['default'].createClass({
             onItemRemoved: function onItemRemoved() {},
             onItemQtyChanged: function onItemQtyChanged() {},
             onChange: function onChange() {},
-            iterator: function iterator() {},
+            iterator: function iterator() {
+                return {};
+            },
             mainComponent: ContainerComponent,
             rowComponent: RowComponent,
             tableClassName: '',
@@ -1359,10 +1361,6 @@ var CartStarterKit = _react2['default'].createClass({
         this.props.onChange();
     },
     componentDidMount: function componentDidMount() {
-        CartStore.on('change', this.refresh);
-        CartStore.on('item-added', this.props.onItemAdded);
-        CartStore.on('item-removed', this.props.onItemRemoved);
-        CartStore.on('item-changed', this.props.onItemQtyChanged);
         CartDispatcher.dispatch({
             actionType: 'cart-initialize',
             config: {
@@ -1370,6 +1368,10 @@ var CartStarterKit = _react2['default'].createClass({
                 selection: this.props.selection
             }
         });
+        CartStore.on('change', this.refresh);
+        CartStore.on('item-added', this.props.onItemAdded);
+        CartStore.on('item-removed', this.props.onItemRemoved);
+        CartStore.on('item-changed', this.props.onItemQtyChanged);
     },
     componentWillUnmount: function componentWillUnmount() {
         CartStore.removeListener('change', this.refresh);
