@@ -8,6 +8,12 @@ This component comes with no batteries included, but allows for a great deal of 
 $ npm install react-shopping-cart-starter-kit
 ```
 
+## Examples
+
+* [http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-unstyled.html](x)
+* http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-bootstrap.html
+* http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-drag-drop.html
+
 ## How to use
 
 ### Preparation
