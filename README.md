@@ -149,7 +149,7 @@ Finally, we'd like to have the submit button disappear when nothing is present i
         )}
 ```
 
-We add `cartChanged` and `getInitialState` to `MyComponent`.
+We also add `cartChanged` and `getInitialState` to `MyComponent`.
 
 ```javascript
     getInitialState() {
