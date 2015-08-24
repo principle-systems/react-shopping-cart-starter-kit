@@ -157,8 +157,6 @@ This function is called once to allow initialization, and then for each item in 
     },
 ```
 
-> To change how the component renders the cart's contents, implement the `mainComponent` and/or `rowComponent` props. (See Customization)
-
 Finally, we'd like to have the submit button disappear when nothing is present in the cart. To achieve this, we introduce a `this.state.canSubmit` flag.
 
 ```javascript
@@ -189,6 +187,8 @@ We also add `cartChanged` and `getInitialState` to `MyComponent`.
         })
     },
 ```
+
+> To change how the component renders the cart's contents, implement the `mainComponent` and/or `rowComponent` props. (See Customization)
 
 ### Editing an existing selection of items
 
