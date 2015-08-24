@@ -10,9 +10,15 @@ $ npm install react-shopping-cart-starter-kit
 
 ## Examples
 
-* [x](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-unstyled.html)
-* http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-bootstrap.html
-* http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-drag-drop.html
+Third-party components/frameworks used in these examples:
+
+* [React-Bootstrap](http://react-bootstrap.github.io/)
+* [Griddle](http://griddlegriddle.github.io/Griddle/)
+* [React DnD](https://gaearon.github.io/react-dnd/)
+
+* [Bootstrap + Griddle example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-bootstrap.html)
+* [Drag and Drop example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-drag-drop.html)
+* [Unstyled cart with initial selection](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-unstyled.html)
 
 ## How to use
 
