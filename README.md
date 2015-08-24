@@ -202,7 +202,9 @@ To make the submit button appear in edit mode, we add a call to `cartChanged` af
     },
 ```
 
-> To change how the component renders the cart's contents, implement the `containerComponent` and/or `rowComponent` props. (See Customization)
+#### What's next?
+
+To change how the component renders the cart's contents, implement the `containerComponent` and/or `rowComponent` props. (See Customization)
 
 ## Props
 
