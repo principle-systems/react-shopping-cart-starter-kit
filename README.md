@@ -1,6 +1,6 @@
 # React Shopping Cart Starter Kit
  
-This component comes with no batteries included. It was initially designed for shopping cart type of functionality (creating and editing orders), but is likely to be applicable in other contexts where a selection of some kind is involved.
+This component comes with no batteries included, but allows for a great deal of flexibility. It was initially designed for shopping cart type of functionality (creating and editing orders), but is likely to be applicable in other contexts where a selection of some kind is involved.
 
 ## Installation
 
@@ -12,7 +12,7 @@ $ npm install react-shopping-cart-starter-kit
 
 ### Preparation
 
-Assign a unique id to each item. For demonstration, we will use the following key-value object with a catalog of five products.
+Assign a unique id to each item used in your application. For demonstration, we will use the following key-value object with a catalog of five products in subsequent examples.
 
 ```javascript
 const myProducts = {
@@ -131,7 +131,7 @@ This function is called once to allow initialization, and then for each item in 
     },
 ```
 
-To change how the component renders the cart's contents, implement the `mainComponent` and/or `rowComponent` props. (See Customization)
+> To change how the component renders the cart's contents, implement the `mainComponent` and/or `rowComponent` props. (See Customization)
 
 Finally, we'd like to have the submit button disappear when nothing is present in the cart. To achieve this, we introduce a `this.state.canSubmit` flag.
 
@@ -149,7 +149,7 @@ Finally, we'd like to have the submit button disappear when nothing is present i
         )}
 ```
 
-We add `cartChanged` and `getInitialState` to `MyComponent`.
+We also add `cartChanged` and `getInitialState` to `MyComponent`.
 
 ```javascript
     getInitialState() {
@@ -161,6 +161,46 @@ We add `cartChanged` and `getInitialState` to `MyComponent`.
         this.setState({
             canSubmit : !this.refs.cart.isEmpty()
         })
+    },
+```
+
+### Editing an existing selection of items
+
+Up to this point, we have assumed that the cart is initially empty. When working with an existing order or selection, we can provide an item array to the cart's `selection` prop.
+
+```javascript
+        <Cart 
+          /* ... as before ... */
+          selection = {[
+              {
+                  id       : 'product-2',
+                  quantity : 15,
+                  data     : myProducts['product-2']
+              },
+              {
+                  id       : 'product-3',
+                  quantity : 1,
+                  data     : myProducts['product-3']
+              }
+          ]} 
+```
+
+To allow the user to revert any changes back to the order's initial state, we add a button that triggers the cart's `reset` method.
+
+```javascript
+    <button onClick={this.undoChanges}>
+        Undo changes
+    </button>
+```
+
+To make the submit button appear in edit mode, we add a call to `cartChanged` when the component has mounted.
+ 
+```javascript
+    undoChanges() {
+        this.refs.cart.reset()
+    },
+    componentDidMount() {
+        this.cartChanged()
     },
 ```
 
