@@ -8,7 +8,24 @@ This component comes with no batteries included, but allows for a great deal of 
 $ npm install react-shopping-cart-starter-kit
 ```
 
-## How to use
+## Examples
+
+The following third-party components/frameworks are used in the examples:
+
+* [React-Bootstrap](http://react-bootstrap.github.io/)
+* [Griddle](http://griddlegriddle.github.io/Griddle/)
+* [React DnD](https://gaearon.github.io/react-dnd/)
+
+##### Bootstrap + Griddle example
+[Bootstrap + Griddle example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-bootstrap.html)
+
+##### Drag and Drop example
+[Drag and Drop example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-drag-drop.html)
+
+##### Unstyled cart with initial selection
+[Unstyled cart with initial selection](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-unstyled.html)
+
+## How to use this component
 
 ### Preparation
 
@@ -23,8 +40,6 @@ const myProducts = {
   "product-5" : { "Name" : "Star Trek Paper Clips", "Price" : "19.99" }
 }
 ```
-
-
 ### Hello, World!
 
 ###### main.js
@@ -99,6 +114,8 @@ React.render(
 </body>
 </html>
 ```
+
+Build.
 
 ```
 $ browserify -t babelify ./main.js -o bundle.js
