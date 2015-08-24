@@ -1667,7 +1667,6 @@ CartDispatcher.register(function (payload) {
             CartStore.emit('ready');
             break;
         case 'cart-revert':
-            CartStore.reset();
             CartStore.init(payload.config);
             CartStore.emit('change');
             break;
