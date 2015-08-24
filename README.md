@@ -182,7 +182,7 @@ We add `cartChanged` and `getInitialState` to `MyComponent`.
 | onItemRemoved    | Function                 | Called when an item is removed from the cart.            | `() => {}`              |
 | onItemQtyChanged | Function                 | Called when an item's quantity has changed.                  | `() => {}`              |
 | onChange         | Function                 | Called when the state of the component changes. (You may want to implement this callback to toggle the visibility of a submit button, based on whether the cart is empty or not.)                                                         | `() => {}`              |
-| iterator         | Function                 | A function used to pass state between rows. The real raison d'&ecirc;tre for this function is to sum up the price of each product in an order and output a total in the footer. |                       |
+| iterator         | Function                 | A function used to pass state between rows. The real raison d'&ecirc;tre for this function is to sum up the price of each product in an order and output a total in the footer. | `() => { return {} }`                       |
 | mainComponent    | Component                | A custom container component.                     |                       |
 | rowComponent     | Component                | A custom row component.                           |                       |
 | tableClassName   | String                   | The css class name to apply to the table element. Whether this value is actually used or not depends on the implementation of `mainComponent`.       |                       |
