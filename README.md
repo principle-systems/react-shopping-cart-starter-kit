@@ -30,6 +30,8 @@ This example also shows how to implement notifications using the various `onItem
 
 #### Drag and Drop example
 
+Add products to the cart by dragging the thumbnail to the drop area.
+
 [![Drag and Drop example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/img/screenshot-drag-and-drop.png)](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-drag-drop.html)
 
 * [View example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-drag-drop.html)
