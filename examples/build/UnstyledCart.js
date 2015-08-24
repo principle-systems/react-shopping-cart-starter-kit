@@ -90,7 +90,7 @@ var MainComponent = _react2['default'].createClass({
             columns: ['Artist', 'Title', 'Label', 'Country', 'Year', 'Format', 'Price'],
             useGriddleStyles: false,
             onRowClick: this.handleRowClick,
-            results: this.state.data }), _react2['default'].createElement(_modulesCartStarterKitJsx2['default'], {
+            results: this.state.data }), _react2['default'].createElement('hr', null), _react2['default'].createElement(_modulesCartStarterKitJsx2['default'], {
             ref: 'cart',
             selection: [{
                 id: 'item-1',
@@ -107,7 +107,7 @@ var MainComponent = _react2['default'].createClass({
             onChange: this.refresh,
             columns: ['Artist', 'Title', 'Price'],
             iterator: this.rowIterator,
-            cartEmptyMessage: 'No items.' }), this.state.buttonsVisible ? _react2['default'].createElement('div', null, _react2['default'].createElement('button', { onClick: this.handleSubmit }, 'Submit'), _react2['default'].createElement('button', { onClick: this.handleEmptyCart }, 'Clear cart')) : _react2['default'].createElement('span', null), _react2['default'].createElement('button', { onClick: this.handleReset }, 'Reset'));
+            cartEmptyMessage: 'No items.' }), _react2['default'].createElement('hr', null), this.state.buttonsVisible ? _react2['default'].createElement('div', null, _react2['default'].createElement('button', { onClick: this.handleSubmit }, 'Submit'), _react2['default'].createElement('button', { onClick: this.handleEmptyCart }, 'Clear cart')) : _react2['default'].createElement('span', null), _react2['default'].createElement('button', { onClick: this.handleReset }, 'Reset'));
     }
 });
 
@@ -1345,7 +1345,7 @@ var CartStarterKit = _react2['default'].createClass({
             iterator: function iterator() {
                 return {};
             },
-            mainComponent: ContainerComponent,
+            containerComponent: ContainerComponent,
             rowComponent: RowComponent,
             tableClassName: '',
             cartEmptyMessage: _react2['default'].createElement('span', null, 'The cart is empty.')
@@ -1431,7 +1431,7 @@ var CartStarterKit = _react2['default'].createClass({
         var _this3 = this;
 
         var context = this.props.iterator(),
-            Container = this.props.mainComponent,
+            Container = this.props.containerComponent,
             Row = this.props.rowComponent;
         if (this.isEmpty()) {
             return _react2['default'].createElement('div', null, this.props.cartEmptyMessage);

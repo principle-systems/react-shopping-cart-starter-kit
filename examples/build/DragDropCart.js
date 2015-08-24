@@ -375,7 +375,7 @@ var DragDropComponent = _react2['default'].createClass({
             onChange: this.refresh,
             columns: ['Artist', 'Title', 'Format', 'Price'],
             iterator: this.rowIterator,
-            mainComponent: DragDropContainer,
+            containerComponent: DragDropContainer,
             rowComponent: DragDropCartRow })), this.state.canSubmit && _react2['default'].createElement('div', null, _react2['default'].createElement(_reactBootstrap.Button, {
             className: 'pull-right',
             onClick: this.reset,
@@ -1667,7 +1667,7 @@ var CartStarterKit = _react2['default'].createClass({
             iterator: function iterator() {
                 return {};
             },
-            mainComponent: ContainerComponent,
+            containerComponent: ContainerComponent,
             rowComponent: RowComponent,
             tableClassName: '',
             cartEmptyMessage: _react2['default'].createElement('span', null, 'The cart is empty.')
@@ -1753,7 +1753,7 @@ var CartStarterKit = _react2['default'].createClass({
         var _this3 = this;
 
         var context = this.props.iterator(),
-            Container = this.props.mainComponent,
+            Container = this.props.containerComponent,
             Row = this.props.rowComponent;
         if (this.isEmpty()) {
             return _react2['default'].createElement('div', null, this.props.cartEmptyMessage);

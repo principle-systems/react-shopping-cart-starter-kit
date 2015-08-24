@@ -160,7 +160,7 @@ const BootstrapCart = React.createClass({
                 total : 0
             }
         } else {
-            let price = Number(row.data['Price'])
+            const price = Number(row.data['Price'])
             return {
                 total : context.total + row.quantity * price
             }

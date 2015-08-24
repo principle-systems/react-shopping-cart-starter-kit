@@ -58,7 +58,7 @@ const MainComponent = React.createClass({
                 total : 0
             }
         } else {
-            let price = Number(row.data['Price'])
+            const price = Number(row.data['Price'])
             return {
                 total : context.total + row.quantity * price
             }
@@ -73,6 +73,7 @@ const MainComponent = React.createClass({
                   useGriddleStyles  = {false}
                   onRowClick        = {this.handleRowClick}
                   results           = {this.state.data} />
+                <hr />
                 <Cart 
                   ref               = 'cart'
                   selection         = {[
@@ -94,6 +95,7 @@ const MainComponent = React.createClass({
                   columns           = {['Artist', 'Title', 'Price']}
                   iterator          = {this.rowIterator}
                   cartEmptyMessage  = {'No items.'} />
+                <hr />
                 {this.state.buttonsVisible ? ( 
                     <div>
                         <button onClick={this.handleSubmit}>

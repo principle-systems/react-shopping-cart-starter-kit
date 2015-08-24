@@ -167,7 +167,7 @@ const ContainerComponent = React.createClass({
 
 const RowComponent = React.createClass({
     handleChange(event) {
-        let value = event.target.value
+        const value = event.target.value
         if (!isNaN(value) && value > 0) {
             this.props.setItemQty(value)
         }
@@ -214,17 +214,17 @@ const CartStarterKit = React.createClass({
     },
     getDefaultProps() {
         return {
-            items             : {},
-            selection         : [],
-            onItemAdded       : () => {},
-            onItemRemoved     : () => {},
-            onItemQtyChanged  : () => {},
-            onChange          : () => {},
-            iterator          : () => { return {} },
-            mainComponent     : ContainerComponent,
-            rowComponent      : RowComponent,
-            tableClassName    : '',
-            cartEmptyMessage  : (
+            items               : {},
+            selection           : [],
+            onItemAdded         : () => {},
+            onItemRemoved       : () => {},
+            onItemQtyChanged    : () => {},
+            onChange            : () => {},
+            iterator            : () => { return {} },
+            containerComponent  : ContainerComponent,
+            rowComponent        : RowComponent,
+            tableClassName      : '',
+            cartEmptyMessage    : (
                 <span>
                     The cart is empty.
                 </span>
@@ -309,7 +309,7 @@ const CartStarterKit = React.createClass({
     },
     render() {
         let context   = this.props.iterator(),
-            Container = this.props.mainComponent,
+            Container = this.props.containerComponent,
             Row       = this.props.rowComponent
         if (this.isEmpty()) {
             return (

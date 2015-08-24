@@ -173,7 +173,7 @@ const DragDropComponent = React.createClass({
                 total : 0
             }
         } else {
-            let price = Number(row.data['Price'])
+            const price = Number(row.data['Price'])
             return {
                 total : context.total + row.quantity * price
             }
@@ -252,7 +252,7 @@ const DragDropComponent = React.createClass({
                                       onChange                = {this.refresh}
                                       columns                 = {['Artist', 'Title', 'Format', 'Price']}
                                       iterator                = {this.rowIterator}
-                                      mainComponent           = {DragDropContainer}
+                                      containerComponent      = {DragDropContainer}
                                       rowComponent            = {DragDropCartRow} />
                                 </div>
                                 {this.state.canSubmit && ( 
