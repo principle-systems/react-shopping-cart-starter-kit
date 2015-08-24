@@ -10,11 +10,13 @@ $ npm install react-shopping-cart-starter-kit
 
 ## Examples
 
-Third-party components/frameworks used in these examples:
+The following third-party components/frameworks are used in the examples:
 
 * [React-Bootstrap](http://react-bootstrap.github.io/)
 * [Griddle](http://griddlegriddle.github.io/Griddle/)
 * [React DnD](https://gaearon.github.io/react-dnd/)
+
+
 
 * [Bootstrap + Griddle example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-bootstrap.html)
 * [Drag and Drop example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-drag-drop.html)
