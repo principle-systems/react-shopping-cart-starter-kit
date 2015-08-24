@@ -22,6 +22,8 @@ The following third-party components/frameworks are used in subsequent examples:
 
 #### Bootstrap + Griddle example
 
+This example also shows how to implement notifications using the various `onItem*` callback props.
+
 ![Bootstrap example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/img/screenshot-bootstrap.png)
 
 [View example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-bootstrap.html)
