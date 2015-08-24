@@ -18,7 +18,7 @@ The following third-party components/frameworks are used in subsequent examples:
 
 * [React-Bootstrap](http://react-bootstrap.github.io/)
 * [Griddle](http://griddlegriddle.github.io/Griddle/)
-* [React DnD](https://gaearon.github.io/react-dnd/)
+* [React DnD](https://gaearon.github.io/react-dnd/) (Drag and Drop)
 
 #### Bootstrap + Griddle example
 
