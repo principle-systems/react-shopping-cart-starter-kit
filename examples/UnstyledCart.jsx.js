@@ -45,9 +45,6 @@ const MainComponent = React.createClass({
         this.refs.cart.reset()
     },
     refresh() {
-        if (!this.refs.cart) {
-            return
-        }
         this.setState({
             buttonsVisible : !this.refs.cart.isEmpty()
         })

@@ -148,9 +148,6 @@ const DragDropComponent = React.createClass({
         }
     },
     refresh() {
-        if (!this.refs.cart) {
-            return
-        }
         this.setState({
             canSubmit : !this.refs.cart.isEmpty()
         })

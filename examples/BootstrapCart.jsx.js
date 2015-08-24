@@ -92,9 +92,6 @@ const BootstrapCart = React.createClass({
         this.refs.cart.addItem(row.props.data.id, 1, item)
     },
     refresh() {
-        if (!this.refs.cart) {
-            return
-        }
         this.setState({
             canSubmit : !this.refs.cart.isEmpty()
         })

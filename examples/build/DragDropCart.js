@@ -312,9 +312,6 @@ var DragDropComponent = _react2['default'].createClass({
         };
     },
     refresh: function refresh() {
-        if (!this.refs.cart) {
-            return;
-        }
         this.setState({
             canSubmit: !this.refs.cart.isEmpty()
         });
@@ -1522,7 +1519,6 @@ var CartStore = (0, _objectAssign2['default'])({}, _events2['default'].prototype
         this.selection.forEach(function (item) {
             item._index = i++;
         });
-        this.emit('change');
     },
 
     getSelection: function getSelection() {
@@ -1569,6 +1565,7 @@ var CartStore = (0, _objectAssign2['default'])({}, _events2['default'].prototype
         var id = this.selection[index].id,
             item = this.selection.splice(index, 1)[0];
         this.reIndex();
+        this.emit('change');
         this.emit('item-removed', this.items[id]);
     },
 
@@ -1591,6 +1588,12 @@ CartDispatcher.register(function (payload) {
     switch (payload.actionType) {
         case 'cart-initialize':
             CartStore.init(payload.config);
+            CartStore.emit('ready');
+            break;
+        case 'cart-revert':
+            CartStore.reset();
+            CartStore.init(payload.config);
+            CartStore.emit('change');
             break;
         case 'cart-add-item':
             CartStore.addItem(payload.key, payload.quantity, payload.item);
@@ -1680,9 +1683,13 @@ var CartStarterKit = _react2['default'].createClass({
         this.setState({
             selection: CartStore.getSelection()
         });
+    },
+    onChange: function onChange() {
+        this.refresh();
         this.props.onChange();
     },
     componentDidMount: function componentDidMount() {
+        CartStore.on('ready', this.refresh);
         CartDispatcher.dispatch({
             actionType: 'cart-initialize',
             config: {
@@ -1690,13 +1697,14 @@ var CartStarterKit = _react2['default'].createClass({
                 selection: this.props.selection
             }
         });
-        CartStore.on('change', this.refresh);
+        CartStore.on('change', this.onChange);
         CartStore.on('item-added', this.props.onItemAdded);
         CartStore.on('item-removed', this.props.onItemRemoved);
         CartStore.on('item-changed', this.props.onItemQtyChanged);
     },
     componentWillUnmount: function componentWillUnmount() {
-        CartStore.removeListener('change', this.refresh);
+        CartStore.removeListener('ready', this.refresh);
+        CartStore.removeListener('change', this.onChange);
         CartStore.removeListener('item-added', this.props.onItemAdded);
         CartStore.removeListener('item-removed', this.props.onItemRemoved);
         CartStore.removeListener('item-changed', this.props.onItemQtyChanged);
@@ -1728,9 +1736,8 @@ var CartStarterKit = _react2['default'].createClass({
         });
     },
     reset: function reset() {
-        this.emptyCart();
         CartDispatcher.dispatch({
-            actionType: 'cart-initialize',
+            actionType: 'cart-revert',
             config: {
                 items: this.props.items,
                 selection: this.props.selection
