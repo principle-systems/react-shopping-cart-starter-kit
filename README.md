@@ -24,13 +24,13 @@ The following third-party components/frameworks are used in subsequent examples:
 
 This example also shows how to implement notifications using the various `onItem*` callback props.
 
-![Bootstrap example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/img/screenshot-bootstrap.png)
+[![Bootstrap example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/img/screenshot-bootstrap.png)](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-bootstrap.html)
 
 * [View example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-bootstrap.html)
 
 #### Drag and Drop example
 
-![Drag and Drop example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/img/screenshot-drag-and-drop.png)
+[![Drag and Drop example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/img/screenshot-drag-and-drop.png)](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-drag-drop.html)
 
 * [View example](http://principle-systems.github.io/react-shopping-cart-starter-kit/examples/index-drag-drop.html)
 
