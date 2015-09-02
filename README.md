@@ -1,6 +1,6 @@
 # React Shopping Cart Starter Kit
  
-This component comes with no batteries included, but allows for a great deal of flexibility. It was initially designed for shopping cart type of functionality and product collections (i.e., creating and editing orders), but is likely to be applicable in other contexts where a selection of some kind is involved.
+This component comes with no batteries included, but allows for a great deal of flexibility. It was initially designed for shopping cart type of functionality and product collections (i.e., for creating and editing orders), but is likely to be applicable in other contexts where a selection of some kind is involved.
 
 ## Installation
 
